@@ -5,11 +5,14 @@ import Header from './components/Header.jsx'
 import FeedbackList from './components/FeedbackList';
 const App = () => {
   const [feedback, setFeedback] = useState(FeedbackData)
+  const deleteHandler = (id) => {
+    console.log(id);
+  }
   return (
     <>
       <Header text={true} />
       <div className='container'>
-        <FeedbackList feedback={feedback} />
+        <FeedbackList feedback={feedback} deleteHandler={deleteHandler} />
       </div>
     </>
   )
