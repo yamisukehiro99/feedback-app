@@ -18,7 +18,6 @@ const App = () => {
     setFeedback(prevStat => {
       return [newFeedback, ...prevStat]
     })
-    console.log(newFeedback);
   }
   return (
     <>
