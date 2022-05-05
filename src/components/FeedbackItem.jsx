@@ -1,11 +1,12 @@
 import React from "react";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaEdit } from "react-icons/fa";
 import PropTypes from "prop-types";
 import Card from "../shared/Card";
-import { useState } from "react";
-const FeedbackItem = ({ item, deleteHandler }) => {
-	const [rating, setRating] = useState(7);
-	const [text, setText] = useState("This is an example of a feedback item");
+import { useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
+const FeedbackItem = ({ item }) => {
+	const { deleteHandler } = useContext(FeedbackContext);
+
 	const getDeletedItem = () => {
 		deleteHandler(item.id);
 	};
@@ -15,6 +16,9 @@ const FeedbackItem = ({ item, deleteHandler }) => {
 			<div className="text-display">{item.text}</div>
 			<button className="close" onClick={getDeletedItem}>
 				<FaTimes />
+			</button>
+			<button className="edit">
+				<FaEdit color="purple" />
 			</button>
 		</Card>
 	);
