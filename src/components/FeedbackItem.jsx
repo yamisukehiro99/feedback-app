@@ -5,7 +5,7 @@ import Card from "../shared/Card";
 import { useContext } from "react";
 import FeedbackContext from "../context/FeedbackContext";
 const FeedbackItem = ({ item }) => {
-	const { deleteHandler } = useContext(FeedbackContext);
+	const { deleteHandler, editedFeedback } = useContext(FeedbackContext);
 
 	const getDeletedItem = () => {
 		deleteHandler(item.id);
@@ -17,7 +17,7 @@ const FeedbackItem = ({ item }) => {
 			<button className="close" onClick={getDeletedItem}>
 				<FaTimes />
 			</button>
-			<button className="edit">
+			<button className="edit" onClick={() => editedFeedback(item)}>
 				<FaEdit color="purple" />
 			</button>
 		</Card>
