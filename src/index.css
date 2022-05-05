@@ -229,3 +229,8 @@ input:focus {
 		width: 80%;
 	}
 }
+
+.active {
+  background-color: cyan;
+  color: white
+}
