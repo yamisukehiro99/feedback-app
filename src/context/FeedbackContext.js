@@ -9,7 +9,9 @@ export const FeedbackContextProvider = ({ children }) => {
     item: {},
     edit: false
   })
-
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
   //Fetching feedback from the mock backend function
   const fetchFeedback = async () => {
     const response = await fetch('/feedback?_sort=id&_order=desc')
@@ -17,11 +19,6 @@ export const FeedbackContextProvider = ({ children }) => {
     setFeedback(data);
     setIsLoading(false)
   }
-
-  useEffect(() => {
-    fetchFeedback()
-  }, [])
-
   //Deleting a feedback
   const deleteHandler = async (id) => {
     if (window.confirm('Are you sure you want to delete'))
@@ -57,6 +54,7 @@ export const FeedbackContextProvider = ({ children }) => {
       feedback.map((item) => item.id === id ? { ...item, ...data } : item)
     )
   }
+
   //Set Item to be updated
   const editedFeedback = (item) => {
     setEditedFeedback({
