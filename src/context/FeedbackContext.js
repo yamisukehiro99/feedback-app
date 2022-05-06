@@ -1,20 +1,33 @@
-import { createContext, useState } from "react";
-import { v4 as uuidv4 } from 'uuid'
-import FeedbackData from "../data/FeedbackData";
-const FeedbackContext = createContext()
+import { createContext, useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-export const FeedbackProvider = ({ children }) => {
-  const [feedback, setFeedback] = useState(FeedbackData)
+const FeedbackContext = createContext();
+
+export const FeedbackContextProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [feedback, setFeedback] = useState([])
+  const [feedbackEdit, setEditedFeedback] = useState({
+    item: {},
+    edit: false
+  })
+
+  //Fetching feedback from the mock backend function
+  const fetchFeedback = async () => {
+    const response = await fetch('http://localhost:5000/feedback?_sort=id&_order=desc')
+    const data = await response.json()
+    setFeedback(data);
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
+
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure you want to delete'))
       setFeedback(feedback.filter(e => e.id !== id))
   }
-
-  const [feedbackEdit, setEditedFeedback] = useState({
-    item: {},
-    edit: false
-  })
   const addingFeedbackHandler = (newFeedback) => {
     newFeedback.id = uuidv4()
     setFeedback(prevStat => {
@@ -34,7 +47,6 @@ export const FeedbackProvider = ({ children }) => {
       edit: true
     })
   }
-
   return <FeedbackContext.Provider value={{
     feedback,
     deleteHandler,
@@ -43,6 +55,7 @@ export const FeedbackProvider = ({ children }) => {
     setEditedFeedback,
     feedbackEdit,
     updateFeedback,
+    isLoading
   }}>
     {children}
   </FeedbackContext.Provider>

@@ -37,6 +37,7 @@ const FeedbackForm = () => {
 		}
 		setText(event.target.value);
 	};
+  
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (text.trim().length > 10) {

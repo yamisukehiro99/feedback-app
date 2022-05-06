@@ -6,10 +6,10 @@ import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
 import AboutIconLink from './components/AboutIconLink';
-import { FeedbackProvider } from './context/FeedbackContext';
+import { FeedbackContextProvider } from './context/FeedbackContext';
 const App = () => {
   return (
-    <FeedbackProvider>
+    <FeedbackContextProvider>
       <Router>
         <Header text={true} />
         <div className='container'>
@@ -21,13 +21,12 @@ const App = () => {
                 <FeedbackList />
                 <AboutIconLink />
               </>
-            }>
-            </Route>
+            }/>
             <Route path='/about' element={<AboutPage />} />
           </Routes>
         </div>
       </Router>
-    </FeedbackProvider>
+    </FeedbackContextProvider>
   )
 };
 

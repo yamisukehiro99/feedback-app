@@ -231,6 +231,6 @@ input:focus {
 }
 
 .active {
-  background-color: cyan;
-  color: white
+	background-color: cyan;
+	color: white;
 }
