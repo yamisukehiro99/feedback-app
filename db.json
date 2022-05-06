@@ -1,38 +1,24 @@
 {
   "feedback": [
     {
-      "id": 1,
-      "rating": 10,
-      "text": "This is feedback item 1 coming from the backend"
+      "text": "here is the 1 test",
+      "rating": 1,
+      "id": 1
     },
     {
-      "id": 3,
-      "rating": 6,
-      "text": "This is feedback item 3 coming from the backend"
+      "text": "here is the 2 test",
+      "rating": 2,
+      "id": 2
     },
     {
-      "rating": "9",
-      "text": "new feedback item",
-      "id": 5
+      "text": "here is the 3 test / edited now",
+      "rating": 3,
+      "id": 3
     },
     {
-      "rating": "9",
-      "text": "new feedback item",
-      "id": 6
-    }
-  ],
-  "name": [
-    {
-      "id": 1,
-      "firstName": "Ibrahim Hafez"
-    },
-    {
-      "id": 2,
-      "firstName": "Amer Hafez"
-    },
-    {
-      "id": 3,
-      "firstName": "Samer Hafez"
+      "text": "here is the 4 test",
+      "rating": 4,
+      "id": 4
     }
   ]
 }
